@@ -9,8 +9,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
 include_directories(src)
 
-set(OVE_CORE_BUILD_DEMO TRUE CACHE BOOL FALSE PARENT_SCOPE)
-set(OVE_CORE_BUILD_TEST FALSE CACHE BOOL FALSE PARENT_SCOPE)
+option(OVE_CORE_BUILD_DEMO "Build demo application." ON)
+option(OVE_CORE_BUILD_TEST "Build test targets." OFF)
 
 add_library(ove_core SHARED
     # Memory
@@ -48,13 +48,13 @@ add_library(ove_core SHARED
     src/ove/core/util/thread.hpp
 )
 
-if(OVE_CORE_BUILD_DEMO)
+if(${OVE_CORE_BUILD_DEMO})
     add_executable(demo demo/main.cpp)
     target_link_libraries(demo ove_core)
-endif(OVE_CORE_BUILD_DEMO)
+endif()
 
 
-if(OVE_CORE_BUILD_TEST)
+if(${OVE_CORE_BUILD_TEST})
     enable_testing()
 
     add_executable(alloc_test test/alloc_test.cpp)
@@ -64,4 +64,4 @@ if(OVE_CORE_BUILD_TEST)
     add_executable(vector_test test/vector_test.cpp)
     add_test(Vector_test vector_test)
     target_link_libraries(vector_test ove_core)
-endif(OVE_CORE_BUILD_TEST)
+endif()
