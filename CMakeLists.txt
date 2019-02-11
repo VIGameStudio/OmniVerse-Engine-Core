@@ -9,6 +9,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
 include_directories(src)
 
+set(OVE_CORE_BUILD_DEMO TRUE CACHE BOOL FALSE PARENT_SCOPE)
+set(OVE_CORE_BUILD_TEST FALSE CACHE BOOL FALSE PARENT_SCOPE)
+
 add_library(ove_core SHARED
     # Memory
     src/ove/core/memory/new.hpp
