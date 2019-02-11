@@ -23,12 +23,16 @@ void test_vector_t()
         vec.push_back(test_str[i]);
     }
 
+    for (size_t i = 0; i < vec.size(); ++i) {
+        std::cout << vec[i];
+    }
+
     for (auto it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it;
     }
 
-    for (size_t i = 0; i < vec.size(); ++i) {
-        std::cout << vec[i];
+    for (auto c : vec) {
+        std::cout << c;
     }
 
     std::cout << std::endl;
@@ -41,12 +45,16 @@ void test_std_vector()
         vec.push_back(test_str[i]);
     }
 
+    for (size_t i = 0; i < vec.size(); ++i) {
+        std::cout << vec[i];
+    }
+
     for (auto it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it;
     }
 
-    for (size_t i = 0; i < vec.size(); ++i) {
-        std::cout << vec[i];
+    for (auto c : vec) {
+        std::cout << c;
     }
 
     std::cout << std::endl;
@@ -64,8 +72,8 @@ int main()
     test_std_vector();
     auto time2 = (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000);
 
-    std::cout << "Time1: " << time1 << " ms" << std::endl;
-    std::cout << "Time2: " << time2 << " ms" << std::endl;
+    std::cout << "vector_t time: " << time1 << " ms" << std::endl;
+    std::cout << "std::vector time: " << time2 << " ms" << std::endl;
 
     return 0;
 }
