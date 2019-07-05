@@ -3,10 +3,22 @@
 #define DEBUG_ASSERT 1
 
 #if DEBUG_ASSERT
-#include <signal.h>
-#define ASSERT(expr) \
-    if (!(expr))     \
-        raise(SIGTRAP);
+
+	#if defined (_MSC_VER)
+		#define ASSERT(expr) \
+			if (!(expr))     \
+				__debugbreak();
+
+	#elif defined (__GNUC__)
+		#include <signal.h>
+		#define ASSERT(expr) \
+			if (!(expr))     \
+				raise(SIGTRAP);
+
+	#else
+		#error "Unknown compiler"
+	#endif
+
 #else
-#define ASSERT(expr)
+	#define ASSERT(expr)
 #endif
