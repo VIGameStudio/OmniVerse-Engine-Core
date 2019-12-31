@@ -1,6 +1,6 @@
 #pragma once
 
 namespace core {
-struct array_t {
-};
+	struct array_t {
+	};
 }
