@@ -1,6 +1,8 @@
 #pragma once
 
-namespace core {
-	struct array_t {
-	};
+namespace ove {
+	namespace core {
+		struct array_t {
+		};
+	}
 }

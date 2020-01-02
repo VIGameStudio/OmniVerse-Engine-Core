@@ -2,31 +2,33 @@
 
 #include <ove/core/memory/alloc.hpp>
 
-namespace core {
-	/*/// FreeListalloc
-	class FreeListalloc : public alloc
-	{
-	public:
-	FreeListalloc(u64 size, void* start);
-	~FreeListalloc();
+namespace ove {
+	namespace core {
+		/*/// FreeListalloc
+		struct FreeListalloc : public alloc
+		{
+		public:
+		FreeListalloc(u64 size, void* start);
+		~FreeListalloc();
 
-	void* allocate(u64 size, u8 alignment) override;
+		void* allocate(u64 size, u8 alignment) override;
 
-	void deallocate(void* p) override;
+		void deallocate(void* p) override;
 
-	private:
-	struct AllocationHeader
-	{
-		u64 size;
-		u8     adjustment;
-	};
+		private:
+		struct AllocationHeader
+		{
+			u64 size;
+			u8     adjustment;
+		};
 
-	struct FreeBlock
-	{
-		u64     size;
-		FreeBlock* next;
-	};
+		struct FreeBlock
+		{
+			u64     size;
+			FreeBlock* next;
+		};
 
-	FreeBlock* free_blocks;
-	};*/
+		FreeBlock* free_blocks;
+		};*/
+	}
 }

@@ -1,20 +1,20 @@
 #pragma once
 
-/**
- * TODO:
- * Revise
- */
-
 #include <thread>
 
 #include <ove/core/util/time.hpp>
 
-namespace core {
-	namespace thread {
-		template <typename Res, typename Ratio>
-		void sleep(ctime_t<Res, Ratio> duration)
+namespace ove
+{
+	namespace core
+	{
+		namespace thread
 		{
-			std::this_thread::sleep_for(duration);
+			template <class R, class P>
+			void sleep(const ctime_t<R, P>& duration)
+			{
+				std::this_thread::sleep_for(duration);
+			}
 		}
 	}
 }
