@@ -19,7 +19,7 @@ namespace ove {
 		using sec_t = std::ratio<1>;
 		using min_t = std::ratio<60>;
 		using hour_t = std::ratio<3600>;
-		
+
 		template <typename R, typename P>
 		using ctime_t = std::chrono::duration<R, P>;
 

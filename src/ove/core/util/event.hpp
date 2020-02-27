@@ -12,7 +12,6 @@
 
 namespace ove {
 	namespace core {
-
 		struct signal_base_t {
 			virtual ~signal_base_t() {}
 			virtual void operator()(const void* p) = 0;
