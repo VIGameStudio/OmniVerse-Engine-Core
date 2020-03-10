@@ -9,12 +9,15 @@ namespace ove
 {
 	namespace core
 	{
-		struct pool_base_t {
+		struct pool_base_t
+		{
 			virtual ~pool_base_t() {}
 			virtual void clear() = 0;
 		};
 
-		template <typename T> struct pool_t : public pool_base_t {
+		template <typename T>
+		struct pool_t : public pool_base_t
+		{
 		public:
 			pool_t(u32 size = 100) { resize(size); }
 			virtual ~pool_t() {}
@@ -23,9 +26,11 @@ namespace ove
 
 			inline u32 size() const { return m_data.size(); }
 
-			inline void resize(u32 n) {
+			inline void resize(u32 n)
+			{
 				const size_t dataSize = size();
 				m_data.resize(n);
+
 				if (size() > dataSize) {
 					for (auto it = m_data.begin() + dataSize; it != m_data.end(); ++it) {
 						it->first = false;
@@ -35,27 +40,32 @@ namespace ove
 
 			inline void clear() { m_data.clear(); }
 
-			inline void remove(const T& object) {
+			inline void remove(const T& object)
+			{
 				m_data.erase(std::remove(m_data.begin(), m_data.end(), object),
 					m_data.end());
 			}
 
 			inline void remove(u32 index) { m_data.erase(m_data.begin() + index); }
 
-			inline bool set(u32 index, const T& object) {
+			inline bool set(u32 index, const T& object)
+			{
 				ASSERT(index < size());
 				m_data[index].first = true;
 				m_data[index].second = object;
 				return true;
 			}
 
-			inline T& get(u32 index) {
+			inline T& get(u32 index)
+			{
 				ASSERT(index < size());
 				return static_cast<T&>(m_data[index].second);
 			}
 
-			inline T& recycle() {
-				for (auto& e : m_data) {
+			inline T& recycle()
+			{
+				for (auto& e : m_data)
+				{
 					if (!e.first) {
 						e.first = true;
 						return static_cast<T&>(e.second);
@@ -66,7 +76,8 @@ namespace ove
 				return recycle();
 			}
 
-			inline void add(const T& object) {
+			inline void add(const T& object)
+			{
 				auto& obj = recycle();
 				obj = object;
 			}
